@@ -288,6 +288,14 @@ extension PhotoPreviewViewController {
                     )
                     navigationItem.leftBarButtonItem = cancelItem
                 }
+                else {
+                    let backItem = UIBarButtonItem(
+                        image: "hx_picker_photolist_left_prompt_arrow".image,
+                        style: .done,
+                        target: self,
+                        action: #selector(didBackItemClick))
+                    navigationItem.leftBarButtonItem = backItem
+                }
                 navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: selectBoxControl)
             }else {
                 var cancelItem: UIBarButtonItem
@@ -630,5 +638,9 @@ extension PhotoPreviewViewController {
     @objc func didCancelItemClick() {
         pickerController?.cancelCallback()
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didBackItemClick() {
+        navigationController?.popViewController(animated: true)
     }
 }
